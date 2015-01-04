@@ -10,7 +10,9 @@ import json
 import sys
 
 app = Flask(__name__, static_folder='client', static_url_path='')
-app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://localhost/allezviens'
+
+app.config['SQLALCHEMY_DATABASE_URI'] = os.environ["DATABASE_URL"]
+# app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://localhost/allezviens'
 db = SQLAlchemy(app)
 
 @app.route('/')
